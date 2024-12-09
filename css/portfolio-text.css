@@ -1,0 +1,33 @@
+.portfolio-text {
+    position: fixed;
+    right: 60px;
+    top: 87%;
+    z-index: 99;
+}
+
+.portfolio-text span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B1717;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    text-shadow: none;
+    position: relative;
+}
+
+.portfolio-text span:hover ~ span {
+    color: initial;
+    text-shadow: none;
+}
+
+.portfolio-text:hover span {
+    color: #810000;
+    text-shadow: 0 0 10px #810000,
+                0 0 20px #810000,
+                0 0 30px rgba(129, 0, 0, 0.7);
+}
+
+.portfolio-text span:hover ~ span {
+    color: #1B1717;
+    text-shadow: none;
+} 

@@ -1,0 +1,12 @@
+{
+  "name": "beirut-unlocked-v2",
+  "version": "1.0.0",
+  "description": "A project for Beirut Unlocked v2",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

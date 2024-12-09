@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beirut Unlocked v2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portfolio-text.css">
+    <link rel="stylesheet" href="css/santa.css">
+    <link rel="stylesheet" href="css/login-signup.css">
+    <link rel="stylesheet" href="css/elfGame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="snow-container"></div>
+    <header class="navbar">
+        <div class="left-section">
+            <a href="https://beirut-unlocked.netlify.app" target="_blank" title="Wanna see v1?" class="left-section">
+                Beirut Unlocked <span class="v2"></span>
+            </a>
+        </div>
+        <div class="nav-btn">
+            <a href="#" id="home-btn"><span>Home</span></a>
+            <a href="#" id="recently-viewed-btn"><span>Recently Viewed</span></a>
+            <a href="#" id="ride-btn"><span>Rides</span></a>
+            <a href="#" id="book-btn"><span>Booking</span></a>
+            <button id="login-btn">Login</button>
+            <button id="signup-btn">Signup</button>
+            <span id="user-name" style="display: none; color: #EEEBDD;"></span>
+        </div>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <div id="suggestions" class="suggestions"></div>
+        </div>
+        <div class="card-wrapper">
+        </div>
+        <div class="login-signup-container" id="login-signup-container">
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form action="#">
+                        <h1>Create Account</h1>
+                        <input type="text" placeholder="Name" />
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Password" />
+                        <button>Sign Up</button>
+                    </form>
+                </div>
+                <div class="form-container log-in-container">
+                    <form action="#">
+                        <h1>Login</h1>
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Password" />
+                        <button>Log In</button>
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1>Welcome Back!</h1>
+                            <p>Please login with your personal info</p>
+                            <button class="ghost" id="logIn">Log In</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <h1>Hello, Friend!</h1>
+                            <p>Enter your personal details and start journey with us</p>
+                            <button class="ghost" id="signUp">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p style="color: #EEEBDD; font-size: 1.2rem;">&copy; 2024 Beirut Unlocked v2</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/naveed._.gung/" target="_blank" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/naveed-gung" target="_blank" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/naveed-sohail-gung-285645310" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://wa.me/96176986034" target="_blank" class="social-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </footer>
+    <div id="santa-wrapper" style="display: none;">
+        <img id="santa" src="/images/santa-pulled-by-reindeer.gif" alt="Santa Animation"> 
+        <div id="message-bubble" class="message-bubble">Click Me dear</div> 
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdSgZ5pcGnDN5IkPuncde2qtHHNRGK6xY"></script>
+    <script src="js/script.js"></script>
+    <script src="js/login-signup.js"></script>
+    <script src="js/santa.js"></script>
+    <script src="js/elfGame.js"></script>
+    <div class="lost-present-message" style="display: none;">
+        <h3 style="color: #CE1212; font-size: 2rem; margin-bottom: 10px;">You Just Lost Your Christmas Present! 🎅❌</h3>
+        <p style="color: #1B1717; font-size: 1.5rem;">Better luck next time!</p>
+    </div>
+    <a href="https://por-fo-lio.netlify.app/" target="_blank" style="text-decoration: none;">
+        <div class="portfolio-text">
+            <span>W</span><span>a</span><span>n</span><span>n</span><span>a</span>
+            <span> </span>
+            <span>s</span><span>e</span><span>e</span>
+            <span> </span>
+            <span>m</span><span>y</span>
+            <span> </span>
+            <span>p</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span>
+            <span>?</span>
+        </div>
+    </a>
+</body>
+</html>

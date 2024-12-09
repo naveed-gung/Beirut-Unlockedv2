@@ -1,0 +1,738 @@
+*, 
+*::before, 
+*::after,
+button,
+a,
+input,
+select,
+textarea {
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5056 10.7754C21.1225 10.5355 21.431 10.4155 21.5176 10.2459C21.5926 10.099 21.5903 9.92446 21.5115 9.77954C21.4205 9.61226 21.109 9.50044 20.486 9.2768L4.59629 3.5728C4.0866 3.38983 3.83175 3.29835 3.66514 3.35605C3.52029 3.40621 3.40645 3.52004 3.35629 3.6649C3.29859 3.8315 3.39008 4.08635 3.57304 4.59605L9.277 20.4858C9.50064 21.1088 9.61246 21.4203 9.77973 21.5113C9.92465 21.5901 10.0991 21.5924 10.2461 21.5174C10.4157 21.4308 10.5356 21.1223 10.7756 20.5054L13.3724 13.8278C13.4194 13.707 13.4429 13.6466 13.4792 13.5957C13.5114 13.5506 13.5508 13.5112 13.5959 13.479C13.6468 13.4427 13.7072 13.4192 13.828 13.3722L20.5056 10.7754Z" stroke="%23EEEBDD" stroke-width="2"/></svg>') 12 12, auto !important;
+}
+
+*:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5056 10.7754C21.1225 10.5355 21.431 10.4155 21.5176 10.2459C21.5926 10.099 21.5903 9.92446 21.5115 9.77954C21.4205 9.61226 21.109 9.50044 20.486 9.2768L4.59629 3.5728C4.0866 3.38983 3.83175 3.29835 3.66514 3.35605C3.52029 3.40621 3.40645 3.52004 3.35629 3.6649C3.29859 3.8315 3.39008 4.08635 3.57304 4.59605L9.277 20.4858C9.50064 21.1088 9.61246 21.4203 9.77973 21.5113C9.92465 21.5901 10.0991 21.5924 10.2461 21.5174C10.4157 21.4308 10.5356 21.1223 10.7756 20.5054L13.3724 13.8278C13.4194 13.707 13.4429 13.6466 13.4792 13.5957C13.5114 13.5506 13.5508 13.5112 13.5959 13.479C13.6468 13.4427 13.7072 13.4192 13.828 13.3722L20.5056 10.7754Z" stroke="%23EEEBDD" stroke-width="2"/></svg>') 12 12, auto !important;
+}
+
+*:active {
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5056 10.7754C21.1225 10.5355 21.431 10.4155 21.5176 10.2459C21.5926 10.099 21.5903 9.92446 21.5115 9.77954C21.4205 9.61226 21.109 9.50044 20.486 9.2768L4.59629 3.5728C4.0866 3.38983 3.83175 3.29835 3.66514 3.35605C3.52029 3.40621 3.40645 3.52004 3.35629 3.6649C3.29859 3.8315 3.39008 4.08635 3.57304 4.59605L9.277 20.4858C9.50064 21.1088 9.61246 21.4203 9.77973 21.5113C9.92465 21.5901 10.0991 21.5924 10.2461 21.5174C10.4157 21.4308 10.5356 21.1223 10.7756 20.5054L13.3724 13.8278C13.4194 13.707 13.4429 13.6466 13.4792 13.5957C13.5114 13.5506 13.5508 13.5112 13.5959 13.479C13.6468 13.4427 13.7072 13.4192 13.828 13.3722L20.5056 10.7754Z" stroke="%23EEEBDD" stroke-width="2"/></svg>') 12 12, auto !important;
+}
+@font-face {  
+    font-family: 'Font';  
+    src: url('/src/Sauce\ Tomato.otf') format('opentype');
+    font-weight: normal;   
+    font-style: normal;    
+  }
+
+body,
+html {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(27, 23, 23, 1);
+    overflow: hidden;
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes diagonal-fall {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.25;
+        transform: translate(10vw, 100vh);
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    
+}
+
+main {
+  margin-top: 90px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100vh;
+  padding:  20px; 
+  box-sizing: border-box;
+  overflow: visible; 
+  position: relative;
+}
+
+.left-section {
+    font-family: 'Font';
+    background-color: #EEEBDD;
+    font-size: 36px;
+    font-weight: 900; 
+    position: relative;
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: cover;
+    background-position: center;
+    text-shadow: 
+        2px 2px 5px #811000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer; 
+}
+
+.left-section span::after {
+    content: 'v2';
+    font-size: 16px;
+    position: absolute;
+    bottom: 3px;
+    right: -30px;
+    color: white;
+}
+
+.left-section span::before {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #630000;
+    color: #EEEBDD;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+}
+
+.left-section span:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.navbar {
+    border-bottom: 1px solid #630000;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    background-color: #630000;
+    border-radius: 0 0 30px 30px;
+    top: 0;
+    z-index: 100;
+    height: 113px;
+    gap: 20px;   
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    height: 50px;
+}
+
+.navbar .nav-btn a {
+    position: relative;
+    display: inline-flex;
+    text-decoration: none;
+    text-align: center;
+    color: #EEEBDD;
+    font-size: 16px;
+    padding: 0;
+    width: 150px;
+    height: 50px;
+    margin: 0 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    z-index: 1;
+    overflow: visible;
+    background-color: #1B1717;
+    justify-content: center;
+    align-items: center;
+    transform: none;
+    font-weight: normal;
+}
+
+.nav-btn a span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-btn > * {
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.navbar .nav-btn a:hover {
+    background-color: #EEEBDD;
+    color: #810000 !important;
+    font-weight: bold;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5056 10.7754C21.1225 10.5355 21.431 10.4155 21.5176 10.2459C21.5926 10.099 21.5903 9.92446 21.5115 9.77954C21.4205 9.61226 21.109 9.50044 20.486 9.2768L4.59629 3.5728C4.0866 3.38983 3.83175 3.29835 3.66514 3.35605C3.52029 3.40621 3.40645 3.52004 3.35629 3.6649C3.29859 3.8315 3.39008 4.08635 3.57304 4.59605L9.277 20.4858C9.50064 21.1088 9.61246 21.4203 9.77973 21.5113C9.92465 21.5901 10.0991 21.5924 10.2461 21.5174C10.4157 21.4308 10.5356 21.1223 10.7756 20.5054L13.3724 13.8278C13.4194 13.707 13.4429 13.6466 13.4792 13.5957C13.5114 13.5506 13.5508 13.5112 13.5959 13.479C13.6468 13.4427 13.7072 13.4192 13.828 13.3722L20.5056 10.7754Z" stroke="%23EEEBDD" stroke-width="2"/></svg>') 12 12, auto !important;
+}
+
+@property --angle {
+    display: none;
+}
+
+.nav-btn a::before,
+.nav-btn a::after {
+    display: none;
+}
+
+.nav-btn a[style*="display: none"],
+.nav-btn button[style*="display: none"] {
+    visibility: hidden;
+    display: none !important;
+    opacity: 0;
+}
+
+.nav-btn a[style*="display: block"],
+.nav-btn button[style*="display: block"] {
+    display: inline-flex !important;
+    visibility: visible;
+    opacity: 1;
+}
+
+#login-btn{
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+    font-weight: bold;
+    color: #EEEBDD;
+    cursor: pointer;
+}
+
+#login-btn,
+#signup-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+#signup-btn {
+    background-color: #EEEBDD;
+    border: 5px solid #EEEBDD;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: bold;
+    color: #811000;
+    cursor: pointer;
+}
+
+.login-signup-form {
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 90%; 
+    max-width: 600px;     
+    z-index: 1000;  
+    border-radius: 10px; 
+    display: none; 
+    margin-top: 650px; 
+    margin-left: 950px;
+    opacity: 0.9;
+}
+
+.search-container {
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    z-index: 98;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-left: 25px;
+}
+
+.search-container::before {
+    filter: blur(1rem);
+    opacity: 0.5;
+}
+
+#search-input {
+  width: 100%; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.suggestions {
+    width: 320px;
+    background-color: #1B1717;
+    border: 2px solid #EEEBDD;
+    border-radius: 15px;
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    align-self: center;
+}
+
+.suggestion-item {
+    padding: 10px 20px;
+    color: #EEEBDD;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+    background-color: #810000;
+}
+
+.suggestions::-webkit-scrollbar {
+    width: 8px;
+}
+
+.suggestions::-webkit-scrollbar-track {
+    background: rgba(238, 235, 221, 0.1);
+    border-radius: 10px;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+    background: #810000;
+    border-radius: 10px;
+}
+
+.suggestions::-webkit-scrollbar-thumb:hover {
+    background: #630000;
+}
+
+.search-bar {
+    width: 350px;
+    height: 60px;
+    padding: 10px 20px;
+    border: 2px solid #EEEBDD;
+    border-radius: 30px;
+    background-color: #1B1717;
+    color: white;
+    font-size: 20px;
+    width: 350px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 0.3s ease-in-, background-color 0.3s ease-in-out;
+    align-self: center;
+}
+
+.search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.search-bar:hover {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.7), 0 0 30px rgba(0, 255, 153, 0.5); 
+
+}
+.search-bar:focus {
+  outline: none; 
+  transform: scale(1.2); 
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.7), 0 0 30px rgba(0, 255, 153, 0.5); 
+  background-color: #292929; 
+}
+
+
+.search-bar:focus {
+    outline: none;
+    background-color: rgb(35, 39, 50);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.login-signup-form {
+    position: fixed; 
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+    pointer-events: all; 
+}
+
+.card {
+  background-color: #811000;
+  color: #EEEBDD;
+  margin: 15px;
+  padding: 20px;
+  flex: 0 1 calc(33.333% - 15px);
+  perspective: 1000px;
+  width: 450px;
+  height: 500px;
+  border-radius: 20px;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  transform: translateZ(0);
+  will-change: transform;
+  z-index: 1;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: preserved-3d;
+  transition: transform 0.8s ease-in-out;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  width: 100%; 
+  margin-top: auto; 
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.09);
+    z-index: 1000;
+}
+
+.card img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.card .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; 
+    padding-top: 10px;
+}
+
+.flip-card {
+    perspective: 1000px; 
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; 
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    border-radius: 8px; 
+}
+
+.card-front {
+    z-index: 2; 
+}
+
+.card-front p{
+  margin: 0;
+  font-size: 16px;
+}
+
+.card-front p span{
+    font-weight: bold;
+}
+
+.card-front p span.marker-icon{
+  margin-left: 5px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-color: #1B1717; 
+    color: #EEEBDD; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back h3 {
+    margin: 10px 0;
+}
+
+.marker-icon {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+.close-map {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #EEEBDD; 
+    color: #1B1717; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    height: 80px;
+    border-radius: 30px 30px 0 0;
+    background-color: #630000;
+    color: #EEEBDD;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.booking-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 800px;
+    height: 80vh;
+    max-height: 600px;
+    background: transparent;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.booking-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.booking-modal::-webkit-scrollbar-track {
+    background: rgba(238, 235, 221, 0.1);
+    border-radius: 10px;
+}
+
+.booking-modal::-webkit-scrollbar-thumb {
+    background: #810000;
+    border-radius: 10px;
+}
+
+.booking-modal::-webkit-scrollbar-thumb:hover {
+    background: #630000;
+}
+
+.booking-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+body.modal-open {
+    overflow: hidden;
+    padding-right: 17px; 
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+#message-bubble {
+    display: none;
+}
+
+.bigger-map-btn {
+    background-color: #810000;
+    color: #EEEBDD;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.bigger-map-btn:hover {
+    background-color: #630000;
+}
+
+.map-container {
+    width: 100%;
+    height: calc(100% - 80px); 
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: calc(8px + 20px) calc(8px + 20px) 8px 8px; 
+    margin-bottom: 8px;
+}
+
+.card img:not(.card-front img) {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: -40px;
+}
+
+.social-icon {
+    color: #EEEBDD;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Click effect */
+.click-effect {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes starBurst {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.coupon-code {
+    padding: 5px 10px;
+    background-color: #810000;
+    color: #EEEBDD;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    border: none;
+}
+
+.coupon-code:hover {
+    background-color: #EEEBDD;
+    color: #810000;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Add styles for the username display */
+#user-name {
+    color: #EEEBDD;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+/* Update navbar styles to handle the username */
+.navbar {
+    /* ... existing styles ... */
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ensure buttons have consistent display */
+#login-btn, #signup-btn {
+    display: inline-block;
+}
+
+
